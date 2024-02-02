@@ -1,45 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 const UseEffect = () => {
 
-  const [render, setRender] = useState(0)
-  const [bag, setBag] = useState('white')
+const [count, setCount] = useState(0)
+const [message, setMessage] = useState('Hello world')
 
 
+const greeting = useCallback((text) => {
+  console.log(text);
+}, [])
 
-  useEffect(() => {
+useEffect(() => {
+  greeting(message)
+}, [greeting, message])
 
-    const handleWindowClick = () => {
-      document.documentElement.style.backgroundColor = generateRandomColor();
-    };
-
-    window.addEventListener('click', handleWindowClick)
-
-    return () => {
-    window.removeEventListener('click', handleWindowClick)
-    }
-  }, [])
-
-
-
-
-  function handleClick() {
-    setRender(render + 1)
-  }
-
-  const generateRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
   return (
-    <div  className="">
-    <h1>{render}</h1>
-    <button onClick={handleClick}>Нажми меня</button>
-  </div>
+    <div className="">
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}> Нажми меня</button>
+    </div>
   )
 }
 
