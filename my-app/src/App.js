@@ -1,9 +1,15 @@
-import React from "react"
+import React from "react";
 import UseEffect from "./components/UseEffect";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <UseEffect />
+    <div>
+      <UseEffect />
+      <Routes>
+        <Route />
+      </Routes>
+    </div>
   );
 }
 
